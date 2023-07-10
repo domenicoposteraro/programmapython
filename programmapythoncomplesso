@@ -1,0 +1,26 @@
+# Nome: Posteraro Domenico
+# Programma: Sicurezza informatica avanzata
+
+import hashlib
+
+def calcola_hash(password):
+    # Calcola l'hash della password utilizzando l'algoritmo SHA-256
+    hash_object = hashlib.sha256(password.encode())
+    return hash_object.hexdigest()
+
+def verifica_password(password, hash_salvato):
+    # Verifica se la password inserita corrisponde all'hash salvato
+    hash_password = calcola_hash(password)
+    return hash_password == hash_salvato
+
+def main():
+    hash_salvato = "4f78b1e3f63d4a65f00347e32d16e7c7be2706f1a9fcb49286d4f9f2f2a6ad87"  # Esempio di hash salvato
+    
+    password = input("Inserisci la password da verificare: ")
+    if verifica_password(password, hash_salvato):
+        print("La password è corretta.")
+    else:
+        print("La password è errata.")
+
+if __name__ == "__main__":
+    main()
